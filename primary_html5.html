@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://content.jwplatform.com/libraries/V6NfEzT7.js"></script>
+<script>jwplayer.key="'AIzaSyCCd7R6tUAGAwFNlq0hV_C7GWNEZNhzxa4'";</script>
+</head>
+<body>
+    <b>Issue:</b> Second ad is immediately skippable if option 'primary' is set to 'html5'
+    <br><br>
+    <b>Reproduction steps:</b> Open this page in Chrome or Firefox and skip the first ad
+    <br><br>
+    <b>Expected behavior:</b> The second ad shouldn't be skippable immediately
+    <br><br>
+    <b>Actual outcome:</b> The second ad is immediately skippable
+    <br><br><br>
+    <div id=player>Loading your player...</div>
+    <script>
+        jwplayer('player').setup({
+            file: 'http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8',
+            autostart: true,
+            advertising: {
+                client: 'vast',
+                skipoffset: 3,
+                schedule:{
+                    adbreak1: {
+                        offset: 'pre',
+                        tag: '//s3.amazonaws.com/demo.jwplayer.com/advertising/assets/vast3_jw_ads.xml'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
